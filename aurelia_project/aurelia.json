@@ -1,0 +1,25 @@
+{
+  "name": "aurelia-webpack",
+  "type": "project:application",
+  "paths": {
+    "root": "dev-app"
+  },
+  "transpiler": {
+    "id": "typescript",
+    "fileExtension": ".ts"
+  },
+  "build": {
+    "options": {
+      "server": "dev",
+      "extractCss": "prod",
+      "coverage": false
+    }
+  },
+  "platform": {
+    "hmr": false,
+    "open": false,
+    "port": 8080,
+    "host": "localhost",
+    "output": "dist"
+  }
+}
