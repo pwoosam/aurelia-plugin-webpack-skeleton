@@ -11,6 +11,9 @@
     "aurelia-bootstrapper": "^2.3.2",
     "aurelia-animator-css": "^1.0.4"
   },
+  "files": [
+    "src"
+  ],
   "devDependencies": {
     "aurelia-cli": "^1.2.3",
     "aurelia-testing": "^1.0.0",
