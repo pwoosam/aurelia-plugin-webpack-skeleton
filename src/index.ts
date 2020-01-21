@@ -5,6 +5,6 @@ export * from './elements/hello-world';
 
 export function configure(config: FrameworkConfiguration) {
   config.globalResources([
-    PLATFORM.moduleName('elements/hello-world')
+    PLATFORM.moduleName('./elements/hello-world')
   ]);
 }

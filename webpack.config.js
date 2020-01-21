@@ -41,11 +41,42 @@ const sassRules = [
 module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, host } = {}) => ({
   resolve: {
     extensions: ['.ts', '.js'],
-    modules: [srcDir, devAppDir, nodeModulesDir],
+    modules: [devAppDir, nodeModulesDir],
     // Enforce single aurelia-binding, to avoid v1/v2 duplication due to
     // out-of-date dependencies on 3rd party aurelia plugins
     alias: {
-      'aurelia-binding': path.resolve(nodeModulesDir, 'aurelia-binding'),
+      ...([
+        'polyfills',
+        'dependency-injection',
+        'loader',
+        'pal',
+        'pal-browser',
+        'metadata',
+        'logging',
+        'binding',
+        'path',
+        'framework',
+        'history',
+        'history-browser',
+        'event-aggregator',
+        'router',
+        'route-recognizer',
+        'templating',
+        'templating-binding',
+        'templating-resources',
+        'templating-router',
+        'task-queue',
+      ].reduce(
+        /**
+         * @param {Record<string, string>} map
+         */
+        (map, packageName) => {
+          const aureliaName = `aurelia-${packageName}`;
+          map[aureliaName] = path.resolve(__dirname, `./node_modules/${aureliaName}`);
+          return map;
+        },
+        {}
+      )),
       'src': srcDir
     }
   },
